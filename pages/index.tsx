@@ -12,19 +12,19 @@ const Home: NextPage = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
 
   const add: MouseEventHandler<HTMLButtonElement> = (e) => {
-    setTodos((prevtodos) => {
+    setTodos((prevTodos) => {
       if (text.length === 0) {
         alert("タスク名を入力してください");
-        return [...prevtodos];
+        return [...prevTodos];
       }
-      return [...prevtodos, { id: Math.random(), label: text, isDone: false }];
+      return [...prevTodos, { id: Math.random(), label: text, isDone: false }];
     });
     setText("");
   };
 
   const toggle: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setTodos((prevtodos) => {
-      return prevtodos.map((todo) => {
+    setTodos((prevTodos) => {
+      return prevTodos.map((todo) => {
         if (todo.id === Number(e.target.value)) {
           return { ...todo, isDone: !todo.isDone };
         }
