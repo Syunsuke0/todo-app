@@ -1,6 +1,8 @@
 import { NextPage } from "next";
 import { ChangeEventHandler, useState } from "react";
 
+type Todo = { id: number; label: string; isDone: boolean };
+
 const Home: NextPage = () => {
   const [text, setText] = useState("");
   const input: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -55,4 +57,5 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
 export default Home;
