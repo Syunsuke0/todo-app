@@ -7,6 +7,23 @@ const Home: NextPage = () => {
     setText(e.target.value);
   };
 
+  const [todos, setTodos] = useState<Todo[]>([
+    { id: Math.random(), label: "TODO1", isDone: false },
+    { id: Math.random(), label: "TODO2", isDone: true },
+    { id: Math.random(), label: "TODO3", isDone: false },
+  ]);
+
+  const toggle: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setTodos((prevtodos) => {
+      return prevtodos.map((todo) => {
+        if (todo.id === Number(e.target.value)) {
+          return { ...todo, isDone: !todo.isDone };
+        }
+        return todo;
+      });
+    });
+  };
+
   return (
     <div className="w-96 mx-auto">
       <h1>TODO</h1>
