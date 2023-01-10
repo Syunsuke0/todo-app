@@ -1,8 +1,6 @@
 import { NextPage } from "next";
 import { ChangeEventHandler, MouseEventHandler, useState } from "react";
 
-type Todo = { id: number; label: string; isDone: boolean };
-
 const Home: NextPage = () => {
   const [text, setText] = useState("");
   const input: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -20,6 +18,11 @@ const Home: NextPage = () => {
       return [...prevTodos, { id: Math.random(), label: text, isDone: false }];
     });
     setText("");
+  };
+
+  const removeTodo = (todoId: number) => {
+    const newTodos = todos.filter((todo) => todo.id !== todoId);
+    setTodos(newTodos);
   };
 
   const toggle: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -53,15 +56,22 @@ const Home: NextPage = () => {
             <li key={todo.id}>
               <div className="flex items-center">
                 <label className="flex gap-x-2">
-                <input
-                  type="checkbox"
-                  value={todo.id}
-                  checked={todo.isDone}
-                  onChange={toggle}
-                />
+                  <input
+                    type="checkbox"
+                    value={todo.id}
+                    checked={todo.isDone}
+                    onChange={toggle}
+                  />
                   <span className="w-52">{todo.label}</span>
-              </label>
+                </label>
+                <button
+                  onClick={() => {
+                    removeTodo(todo.id);
+                  }}
                   className="bg-red-500 font-bold text-white text-xs rounded-full px-1 shrink-0"
+                >
+                  削除
+                </button>
               </div>
             </li>
           );
