@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler, MouseEventHandler, useState } from "react";
 
 type Todo = { id: number; label: string; isDone: boolean };
 
@@ -9,11 +9,18 @@ const Home: NextPage = () => {
     setText(e.target.value);
   };
 
-  const [todos, setTodos] = useState<Todo[]>([
-    { id: Math.random(), label: "TODO1", isDone: false },
-    { id: Math.random(), label: "TODO2", isDone: true },
-    { id: Math.random(), label: "TODO3", isDone: false },
-  ]);
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  const add: MouseEventHandler<HTMLButtonElement> = (e) => {
+    setTodos((prevtodos) => {
+      if (text.length === 0) {
+        alert("タスク名を入力してください");
+        return [...prevtodos];
+      }
+      return [...prevtodos, { id: Math.random(), label: text, isDone: false }];
+    });
+    setText("");
+  };
 
   const toggle: ChangeEventHandler<HTMLInputElement> = (e) => {
     setTodos((prevtodos) => {
@@ -36,7 +43,9 @@ const Home: NextPage = () => {
           value={text}
           type="text"
         />
-        <button className="border border-black">Add</button>
+        <button onClick={add} className="border border-black">
+          Add
+        </button>
       </div>
       <ul>
         {todos.map((todo) => {
