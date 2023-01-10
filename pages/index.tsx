@@ -45,10 +45,11 @@ const Home: NextPage = () => {
               <label className="flex">
                 <input
                   type="checkbox"
-                  onChange={toggle}
+                  value={todo.id}
                   checked={todo.isDone}
+                  onChange={toggle}
                 />
-                <div>{todo.label}</div>
+                <span>{todo.label}</span>
               </label>
             </li>
           );
