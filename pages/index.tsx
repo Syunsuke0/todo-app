@@ -34,9 +34,9 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className="w-96 mx-auto">
-      <h1>TODO</h1>
-      <div className="flex items-center gap-2">
+    <div className="w-96 mx-auto font-mono">
+      <h1 className="mt-4 text-xl">TODO</h1>
+      <div className="flex items-center gap-4">
         <input
           className="border border-black"
           onChange={input}
@@ -47,19 +47,22 @@ const Home: NextPage = () => {
           Add
         </button>
       </div>
-      <ul>
+      <ul className="mt-4 space-y-2">
         {todos.map((todo) => {
           return (
             <li key={todo.id}>
-              <label className="flex">
+              <div className="flex items-center">
+                <label className="flex gap-x-2">
                 <input
                   type="checkbox"
                   value={todo.id}
                   checked={todo.isDone}
                   onChange={toggle}
                 />
-                <span>{todo.label}</span>
+                  <span className="w-52">{todo.label}</span>
               </label>
+                  className="bg-red-500 font-bold text-white text-xs rounded-full px-1 shrink-0"
+              </div>
             </li>
           );
         })}
