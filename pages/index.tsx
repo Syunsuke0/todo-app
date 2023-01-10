@@ -19,6 +19,22 @@ const Home: NextPage = () => {
         />
         <button className="border border-black">Add</button>
       </div>
+      <ul>
+        {todos.map((todo) => {
+          return (
+            <li key={todo.id}>
+              <label className="flex">
+                <input
+                  type="checkbox"
+                  onChange={toggle}
+                  checked={todo.isDone}
+                />
+                <div>{todo.label}</div>
+              </label>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };
