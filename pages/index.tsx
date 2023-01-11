@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import { ChangeEventHandler, MouseEventHandler, useState } from "react";
+import { AddButton } from "../components/AddButton";
 
 const Home: NextPage = () => {
   const [text, setText] = useState("");
@@ -46,9 +47,7 @@ const Home: NextPage = () => {
           value={text}
           type="text"
         />
-        <button onClick={add} className="border border-black">
-          Add
-        </button>
+        <AddButton add={add} />
       </div>
       <ul className="mt-4 space-y-2">
         {todos.map((todo) => {
