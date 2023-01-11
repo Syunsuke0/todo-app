@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import { ChangeEventHandler, MouseEventHandler, useState } from "react";
 import { AddButton } from "../components/AddButton";
+import { ListItem } from "../components/ListItem";
 
 const Home: NextPage = () => {
   //インプット
@@ -58,15 +59,7 @@ const Home: NextPage = () => {
           return (
             <li key={todo.id}>
               <div className="flex items-center">
-                <label className="flex gap-x-2">
-                  <input
-                    type="checkbox"
-                    value={todo.id}
-                    checked={todo.isDone}
-                    onChange={toggle}
-                  />
-                  <span className="w-52">{todo.label}</span>
-                </label>
+                <ListItem todo={todo} toggle={toggle} />
                 <button
                   onClick={() => {
                     removeTodo(todo.id);
