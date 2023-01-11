@@ -8,10 +8,10 @@ export const AddButton: React.FC<{
       onClick={add}
       xmlns="http://www.w3.org/2000/svg"
       className="rounded-md outline outline-sky-500 icon icon-tabler icon-tabler-plus shrink-0 px-2 cursor-pointer"
-      width="36"
-      height="36"
+      width="26"
+      height="26"
       viewBox="0 0 24 24"
-      stroke-width="2.5"
+      stroke-width="4.5"
       stroke="#00abfb"
       fill="none"
       stroke-linecap="round"
