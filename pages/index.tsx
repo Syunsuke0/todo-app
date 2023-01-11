@@ -3,6 +3,7 @@ import { ChangeEventHandler, MouseEventHandler, useState } from "react";
 import { AddButton } from "../components/AddButton";
 
 const Home: NextPage = () => {
+  //インプット
   const [text, setText] = useState("");
   const input: ChangeEventHandler<HTMLInputElement> = (e) => {
     setText(e.target.value);
@@ -10,6 +11,7 @@ const Home: NextPage = () => {
 
   const [todos, setTodos] = useState<Todo[]>([]);
 
+  //タスク追加
   const add: React.MouseEventHandler<SVGSVGElement> = () => {
     setTodos((prevTodos) => {
       if (text.length === 0) {
@@ -21,11 +23,13 @@ const Home: NextPage = () => {
     setText("");
   };
 
+  //タスクの削除
   const removeTodo = (todoId: number) => {
     const newTodos = todos.filter((todo) => todo.id !== todoId);
     setTodos(newTodos);
   };
 
+  //タスクの状態管理
   const toggle: ChangeEventHandler<HTMLInputElement> = (e) => {
     setTodos((prevTodos) => {
       return prevTodos.map((todo) => {
