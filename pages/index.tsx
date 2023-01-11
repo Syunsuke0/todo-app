@@ -9,7 +9,7 @@ const Home: NextPage = () => {
 
   const [todos, setTodos] = useState<Todo[]>([]);
 
-  const add: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const add: React.MouseEventHandler<SVGSVGElement> = () => {
     setTodos((prevTodos) => {
       if (text.length === 0) {
         alert("タスク名を入力してください");
